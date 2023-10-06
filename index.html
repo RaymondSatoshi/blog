@@ -17,13 +17,25 @@
 <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?6a43ea6dcee500c1dd6c56bf0c0ee2f6";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
+(function(win, export_obj) {
+    win['TeaAnalyticsObject'] = export_obj;
+    if (!win[export_obj]) {
+        function _collect() {
+            _collect.q.push(arguments);
+        }
+        _collect.q = _collect.q || [];
+        win[export_obj] = _collect;
+    }
+    win[export_obj].l = +new Date();
+})(window, 'collectEvent');
+</script>
+<script async src="https://lf3-data.volccdn.com/obj/data-static/log-sdk/collect/collect-autotrack-rangers.js"></script>
+<script>
+    window.collectEvent('init', { app_id:20001573,
+    	channel_domain: 'https://gator.volces.com',
+    disable_sdk_monitor:true, //用于禁止SDK启动后自身监控事件 onload 的上报
+    });
+    window.collectEvent('start')
 </script>
 </head>
 
